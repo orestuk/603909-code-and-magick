@@ -39,6 +39,9 @@ var getMaxTimes = function (times) {
 };
 
 window.renderStatistics = function (ctx, names, times) {
+  var histX = CLOUD_X + CLOUD_CONTENT_X + 20;
+  var histY = CLOUD_Y + CLOUD_CONTENT_Y + TEXT_LINE_HEIGHT * 2;
+  var maxHeight;
   // Draw Cloud
   drawCloud(ctx, CLOUD_X + CLOUD_SHADOW_SIZE, CLOUD_Y + CLOUD_SHADOW_SIZE, CLOUD_SHADOW_COLOR);
   drawCloud(ctx, CLOUD_X, CLOUD_Y, CLOUD_BACKGROUND_COLOR);
@@ -49,15 +52,13 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Ура вы победили!', CLOUD_X + CLOUD_CONTENT_X, CLOUD_Y + CLOUD_CONTENT_Y);
   ctx.fillText('Список результатов:', CLOUD_X + CLOUD_CONTENT_X, CLOUD_Y + CLOUD_CONTENT_Y + TEXT_LINE_HEIGHT);
   // Draw Histogram
-  var histX = CLOUD_X + CLOUD_CONTENT_X + 20;
-  var histY = CLOUD_Y + CLOUD_CONTENT_Y + TEXT_LINE_HEIGHT * 2;
-  var maxHeight = getMaxTimes(times);
+  maxHeight = getMaxTimes(times);
   for (var i = 0; i < names.length; i++) {
     var colHeight = (HISTOGRAM_HEIGHT / maxHeight) * times[i];
     var colX = histX + i * (COL_WIDTH + COL_GAP);
+    var colColour = MY_COL_COLOR;
     ctx.fillStyle = TEXT_COLOR;
     ctx.fillText(Math.round(times[i]).toString(), colX, histY + (HISTOGRAM_HEIGHT - colHeight));
-    var colColour = MY_COL_COLOR;
     // Draw columns
     if (names[i] !== MY_NAME) {
       colColour = COL_COLOR + Math.random();
