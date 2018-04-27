@@ -12,6 +12,7 @@
     x: '50%',
     y: '80px'
   };
+  var userDialog = document.querySelector('.setup');
   var similarListElement = document.querySelector('.setup-similar-list');
   var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
   var setupOpen = document.querySelector('.setup-open');
@@ -30,13 +31,13 @@
     }
   };
   var openPopup = function () {
-    window.userDialog.style.left = START_SETUP_POSITION.x;
-    window.userDialog.style.top = START_SETUP_POSITION.y;
-    window.userDialog.classList.remove('hidden');
+    userDialog.style.left = START_SETUP_POSITION.x;
+    userDialog.style.top = START_SETUP_POSITION.y;
+    userDialog.classList.remove('hidden');
     document.addEventListener('keydown', onPopupEscPress);
   };
   var closePopup = function () {
-    window.userDialog.classList.add('hidden');
+    userDialog.classList.add('hidden');
     document.removeEventListener('keydown', onPopupEscPress);
   };
   var getRandomItem = function (array) {
@@ -130,5 +131,7 @@
   renderWizardList(generateWizards());
   document.querySelector('.setup-similar').classList.remove('hidden');
 
-  window.userDialog = document.querySelector('.setup');
+  window.setup = {
+    userDialog: userDialog
+  };
 })();
