@@ -117,7 +117,6 @@
   });
   artifactsElement.addEventListener('dragleave', function (evt) {
     evt.target.style.backgroundColor = '';
-    artifactsElement.style.outline = '';
     evt.preventDefault();
   });
   artifactsElement.addEventListener('drop', function (evt) {
@@ -128,7 +127,6 @@
     }
     evt.preventDefault();
   });
-  // userDialog.classList.remove('hidden');
   renderWizardList(generateWizards());
   document.querySelector('.setup-similar').classList.remove('hidden');
 
