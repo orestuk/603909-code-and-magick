@@ -18,8 +18,8 @@
         x: moveEvt.clientX,
         y: moveEvt.clientY
       };
-      window.userDialog.style.top = (window.userDialog.offsetTop - shift.y) + 'px';
-      window.userDialog.style.left = (window.userDialog.offsetLeft - shift.x) + 'px';
+      window.setup.userDialog.style.top = (window.setup.userDialog.offsetTop - shift.y) + 'px';
+      window.setup.userDialog.style.left = (window.setup.userDialog.offsetLeft - shift.x) + 'px';
     };
 
     var onMouseUp = function (upEvt) {
